@@ -29,3 +29,5 @@ Route::get('/contact', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/product', 'HomeController@product')->name('product');
+Route::get('/add_product', 'HomeController@addproduct')->name('addProduct');

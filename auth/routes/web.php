@@ -11,18 +11,24 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes(['register' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
+Route::middleware(['auth'])->group(function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/change-password', 'ProfileController@showPasswordForm');
-Route::put('/change-password', 'ProfileController@handlePasswordForm')
-    ->name('profile.handle_password');
+
+
+
+
+Route::get('/change-password', 'ProfileController@editPasswordForm')
+    ->name('profile.edit_password');
+Route::put('/change-password', 'ProfileController@updatePassword')
+    ->name('profile.update_password');
+Route::get('/user-list', 'AdminController@showlist')->middleware('is.admin');
+});

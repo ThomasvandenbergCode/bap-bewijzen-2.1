@@ -1,0 +1,39 @@
+
+body {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.grid-container {
+    margin: 100px auto;
+    /*border: 1px dotted black;*/
+    width: max-content;
+    grid-gap: 100px;
+    display: grid;
+    grid-template-columns: 1fr  1fr;
+}
+
+.product, .layouts {
+    border-radius: 12.5px;
+    border: 1px solid black;
+    text-align: center;
+    width: 250px;
+    height: 250px;
+    vertical-align: middle;
+    line-height: 250px;
+    transition: 0.5s;
+    font-size: 2em;
+}
+
+.grid-container > div:hover {
+    background-color: black;
+    color: white;
+}
+
+
+
+
+
+
+

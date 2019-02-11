@@ -14,7 +14,7 @@
                 <div class=""> <h1>Grauw | Login</h1></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login') }}" autocomplete="off">
                         @csrf
 
                         <div class="">
@@ -35,7 +35,7 @@
                             <label for="password" class="">{{ __('wachtwoord') }}</label>
 
                             <div class="">
-                                <input id="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="password" type="password" class="{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" autocomplete="off" required>
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">

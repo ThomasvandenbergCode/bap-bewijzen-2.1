@@ -1,0 +1,155 @@
+
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 75px auto;
+    width: 800px;
+}
+
+.product_title {
+    position: absolute;
+    top: 0;
+    border: 0;
+    border-bottom: 1px solid rgb(77, 78, 79);
+
+}
+
+.product_title:hover {
+    border-bottom: 1px solid black;
+}
+
+.product_title:focus {
+    outline: none;
+}
+
+
+.imageContainer {
+    float: left;
+    width: 100px;
+    height: max-content;
+    margin-top: 50px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+
+.sideImage {
+    margin-bottom: 20px;
+    position: relative;
+    width: 66px;
+    height: 66px;
+    transition: transform 1s;
+    display: inline-block;
+    border: 1px solid  black;
+}
+
+.mainImage {
+    width: 500px;
+    height: 500px;
+    display: inline-block;
+    border: 1px solid black;
+    margin-top: 50px;
+}
+
+.sideImage > img {
+    width:  66px;
+    height: 66px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
+.mainImage > img {
+    width:  500px;
+    height: 500px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
+
+
+.sideImage > input[type=file] {
+    color: transparent;
+    width: 66px;
+    height: 66px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    cursor: pointer;
+}
+
+.mainImage > input[type=file] {
+    color: transparent;
+    width: 500px;
+    height: 500px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    cursor: pointer;
+}
+
+.sideImage:hover, .mainImage:hover {
+    box-shadow: 1px 1px 10px black;
+}
+
+.geld {
+    margin-top: 50px;
+    float: right;
+}
+
+.geld > input[type=number] {
+    border: 0;
+    border-bottom: 1px solid black;
+}
+
+input[type=number]:focus {
+    outline-color: black;
+}
+
+.sizeContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    float: right;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 2;
+    padding: 5px;
+    margin: 2px;
+    margin-top: 75px;
+    width: max-content;
+
+}
+.size {
+    display: inline-block;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    color: black;
+    font-size: 1.5em;
+    line-height: 50px;
+}
+
+.small:hover, .medium:hover, .large:hover {
+    background-color: black;
+    color: white;
+    transition: 0.2s;
+}
+
+.sizeContainer > .size  > .number {
+    outline: none;
+    border: 0;
+    width: 40px;
+    height: 40px;
+}

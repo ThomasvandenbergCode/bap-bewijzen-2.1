@@ -3,7 +3,16 @@
 @section('content')
     <div class="container">
        <h1>Change password</h1>
-        <form action=" {{ route('profile.handle_password') }}" method="POST">
+
+        @if($errors->count())
+            <div class="alert alert-danger">
+            @foreach($errors->all() as $error)
+                {{ $error }} <br>
+            @endforeach
+            </div>
+        @endif
+
+        <form action=" {{ route('profile.update_password') }}" method="POST">
 
             @csrf
             @method('PUT')
@@ -14,6 +23,9 @@
                 <input type="password" name="new_password"
                         placeholder="Enter new password"
                  class="form-control">
+                @if ($errors->has('new_password'))
+                    <strong>{{ $errors->first('new_password') }}</strong>
+                    @endif
             </div>
             <div class="form-group">
                 <label for="new_password_confirmation">New password again</label>
