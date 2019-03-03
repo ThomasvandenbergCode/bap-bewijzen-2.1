@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
 
     @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/cms.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{url('assets/css/bootstrap.min.css')}}"/>
     @show
 

@@ -16,7 +16,7 @@
   }
 
   .product_title {
-    margin-left: 200px;
+
     text-align: center;
     position: absolute;
     top: 0;
@@ -118,12 +118,14 @@
 
     .sideImage:hover, .mainImage:hover { box-shadow: 1px 1px 10px black;}
 
-  .geld { float: right;}
+  .geld { float: right; margin-left: 100px;}
 
   .geld > span > input[type=number] {
       border: 0;
       border-bottom: 1px solid black;
   }
+
+
 
   input[type=number]:focus {outline-color: black;}
 
@@ -173,6 +175,7 @@
   .infobox {
     width: 150px;
     border: 1px solid black;
+    resize: none;
   }
 
   .form-group-descriptionbox {
@@ -182,4 +185,5 @@
   .descriptionbox {
     width: 500px;
     border: 1px solid black;
+    resize: none;
   }

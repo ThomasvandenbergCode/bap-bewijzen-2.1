@@ -1,3 +1,5 @@
+var inputs = document.getElementsByClassName("inputs");
+console.log(inputs);
 document.getElementById('add-image-field').addEventListener("click", function(){
 var imageContainer = document.getElementById('imageContainer');
     var jouwNaam = document.getElementsByClassName("sideImage");
@@ -16,9 +18,7 @@ var imageContainer = document.getElementById('imageContainer');
         x.addEventListener('change', function () {
             openFile(event, "output" + i);
         });
-        if(i == 5) {
 
-        }
     }
 
 

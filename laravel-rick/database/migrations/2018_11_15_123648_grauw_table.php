@@ -21,6 +21,7 @@ class GrauwTable extends Migration
             $table->integer('large');
             $table->integer('medium');
             $table->integer('small');
+            $table->integer('oldPrice');
             $table->integer('price');
             $table->timestamps();
         });

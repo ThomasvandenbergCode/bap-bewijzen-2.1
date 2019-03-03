@@ -1,15 +1,17 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>name</title>
+    <title>yeet</title>
 @endsection
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+
+    <link rel="stylesheet" href="{{ asset('css/cmstoevoegen.css') }}"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 @endsection
 
 @section('header')
-    <h2>reeeeeeeee</h2>
+    <h2>product toevoegen</h2>
 
 @endsection
 
@@ -25,32 +27,116 @@
             </ul>
         </div>
     @endif
-    <h2>U verandert: {{ $kleding->name}}</h2>
-    <form action="{{route ('editConfirm',$kleding)}}" method="POST" enctype="multipart/form-data">
-        @csrf
 
-        <div class="row">
 
-            <div class="col-5">
+    <!-- opentag wrapper -->
+    <div class="wrapper">
 
-                <div class="form-group">
 
-                    <label for="">Naam van het product:</label>
 
-                    <input type="text" name="name" class="form-control" value="{{ $kleding->name}}"/>
+        <form class="" action="{{route ('editConfirm',$kleding)}}" method="post" enctype="multipart/form-data">
+            @csrf
 
-                </div>
+
+            <input class="product_title" type="text" name="name" value="{{ $kleding->name}}" placeholder="title">
+
+            <div class="geld">
+
+                <label>actueele prijs <span class="currencyinput">€<input type="text" name="oldPrice" min="1" step="any" placeholder="00,00" value="{{ $kleding->oldPrice}}" /></span></label>
 
             </div>
 
+            <div class="geld oud-geld">
+
+                <label>oude prijs <span class="currencyinput">€<input type="text" name="price" min="1" step="any" placeholder="00,00" value="{{ $kleding->price}}" /></span></label>
+
+            </div>
+
+
+
+
+            <!-- opentag imageContainer -->
+            <div id="imageContainer">
+
+
+
+                {{--BUTTON WAARMEE JE ONCLICK EEN IMAGEFIELD KAN TOEVOEGEN--}}
+                <div id="add-image-field"><i class="fas fa-plus"></i></div>
+
+
+                {{--<div class="sideImage sideImage1">--}}
+                    {{--<input type='file' name="{{ $kleding->photos}}[]" value="{{ $kleding->photos}}" accept='image/*' onchange='openFile(event, "output1")'>--}}
+                    {{--<label for="file"></label>--}}
+                    {{--<img id="output1" src="../images/default-image.jpg" alt="your image" />--}}
+                {{--</div>--}}
+
+                @foreach($kleding->images as $image)
+                <div class="sideImage sideImage2">
+
+                    <input type='file' class="inputs" name="photos[]" value="photos[]" accept='image/*' onchange='openFile(event, "output{{$image->id}}")'>
+                    <label for="file"></label>
+                    <img id="output{{$image->id}}" src="{{asset('/photos/'.$image->filename)}}" alt="your image" />
+                </div>
+                    <button id="{{$image->id}}"></button>
+                @endforeach
+
+
+            </div>
+
+
+
+            <div class="mainImage">
+                <input type='file' name="photos[]" value="photos[]" accept='image/*' onchange='openFile(event, "output7")'>
+                <label for="file"></label>
+                <img id="output7" src="../images/default-image.jpg" alt="your image" />
+            </div>
+
+
+
+
+            <div class="sizeContainer">
+                <section class="size small">
+                    S
+                </section>
+
+                <section class="size medium">
+                    M
+                </section>
+
+                <section class="size large">
+                    L
+                </section>
+
+                <div class="size smallNumber">
+                    <input class="number" type="number" name="large" value="{{ $kleding->large}}" >
+                </div>
+
+                <div class="size mediumNumber">
+                    <input class="number" type="number" name="medium" value="{{ $kleding->medium}}">
+                </div>
+
+                <div class="size mediumNumber">
+                    <input class="number" type="number" name="small" value="{{ $kleding->small}}">
+                </div>
+            </div>
+
+            <div class="form-group form-group-infobox">
+
+                <label for="">De info van het product:</label>
+                <br>
+
+                <textarea class="infobox" name="info" rows="10" cols="30" class="form-control">{{ $kleding->info}}</textarea>
+
+            </div>
             <div class="col-2">
 
-                <div class="form-group">
+
+                <div class="form-group form-group-descriptionbox">
 
                     <label for="">De beschrijving van het product:</label>
                     <br>
 
-                    <textarea name="description" rows="10" cols="30" class="form-control">{{$kleding->description}}</textarea>
+                    <textarea class="descriptionbox"  name="description" rows="10" cols="30" class="form-control">{{ $kleding->description}}</textarea>
 
                 </div>
 
@@ -58,79 +144,27 @@
 
             <div class="col-2">
 
-                <div class="form-group">
 
-                    <label for="">De info van het product:</label>
-                    <br>
 
-                    <textarea name="info" rows="10" cols="30" class="form-control">{{$kleding->info}}</textarea>
-
-                </div>
 
             </div>
 
-            <div class="col-5">
+            <p>
 
-                <div class="form-group">
+                <button type="submit" class="btn btn-primary">Opsturen</button>
 
-                    <label for="">Large:</label>
-
-                    <input type="text" name="large" class="form-control" value="{{ $kleding->large}}"/>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="form-group">
-
-            <label for="">Medium</label>
-
-            <input type="text" name="medium" class="form-control" value="{{ $kleding->medium}}"/>
-
-        </div>
-
-        <div class="form-group">
-
-            <label for="">Small:</label>
-
-            <input type="text" name="small" class="form-control" value="{{ $kleding->small}}"/>
-
-        </div>
-
-        <div class="form-group">
-
-            <label for="">Price:</label>
-
-            <input type="text" name="price" class="form-control" value="{{ $kleding->price}}"/>
-
-        </div>
-
-        <div class="form-group">
-
-            <label for="">Images:</label>
-
-            <input type="file" name="photo" accept="image/*"/>
-
-        </div>
-
-        @foreach($kleding->images as $image)
-            <a href="{{route ('deleteOne', $image->id)}}"><img src="{{asset('/photos/'.$image->filename)}}" alt="Grauw Image"></a>
-        @endforeach
-        <p>
-
-            <button type="submit" class="btn btn-primary">Opsturen</button>
-
-        </p>
-
-    </form>
-
-    <br>
-    <br>
+            </p>
 
 
+        </form>
 
+        <!-- closetag wrapper -->
+    </div>
+
+    <script type="text/javascript" src="{{ URL::asset('js/toevoegen.js') }}"></script>
 
 @endsection
+
+
+
 

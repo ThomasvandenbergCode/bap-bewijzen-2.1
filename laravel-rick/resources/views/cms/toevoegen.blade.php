@@ -36,12 +36,20 @@
 
         <form class="" action="{{route ('toevoegenHandle')}}" method="post" enctype="multipart/form-data">
             @csrf
-           
 
-            <input class="product_title" type="text" name="product_title" value="{{ old('name')}}" placeholder="title">
+
+            <input class="product_title" type="text" name="name" value="{{ old('name')}}" placeholder="title">
 
             <div class="geld">
-                <span class="currencyinput">€<input type="text" name="price" min="1" step="any" placeholder="00,00" value="{{ old('price')}}" /></span>
+
+                <label>actueele prijs <span class="currencyinput">€<input type="text" name="oldPrice" min="1" step="any" placeholder="00,00" value="{{ old('oldPrice')}}" /></span></label>
+
+            </div>
+
+            <div class="geld oud-geld">
+
+                <label>oude prijs <span class="currencyinput">€<input type="text" name="price" min="1" step="any" placeholder="00,00" value="{{ old('price')}}" /></span></label>
+
             </div>
 
 
@@ -64,7 +72,7 @@
 
 
                <div class="sideImage sideImage2">
-               <input type='file' accept='image/*' onchange='openFile(event, "output2")'>
+               <input type='file' name="photos[]" value="photos[]" accept='image/*' onchange='openFile(event, "output2")'>
                 <label for="file"></label>
                 <img id="output2" src="../images/default-image.jpg" alt="your image" />
                 </div>
@@ -73,7 +81,7 @@
 
 
             <div class="mainImage">
-                <input type='file' accept='image/*' onchange='openFile(event, "output7")' value="{{ old('large')}}">
+                <input type='file' name="photos[]" value="photos[]" accept='image/*' onchange='openFile(event, "output7")'>
                 <label for="file"></label>
                 <img id="output7" src="../images/default-image.jpg" alt="your image" />
             </div>
@@ -95,15 +103,15 @@
                 </section>
 
                 <div class="size smallNumber">
-                    <input class="number" type="number" name="small_input" value="{{ old('large')}}" >
+                    <input class="number" type="number" name="large" value="{{ old('large')}}" >
                 </div>
 
                 <div class="size mediumNumber">
-                    <input class="number" type="number" name="large_input" value="{{ old('medium')}}">
+                    <input class="number" type="number" name="medium" value="{{ old('medium')}}">
                 </div>
 
                 <div class="size mediumNumber">
-                    <input class="number" type="number" name="medium_input" value="{{ old('small')}}">
+                    <input class="number" type="number" name="small" value="{{ old('small')}}">
                 </div>
             </div>
 
